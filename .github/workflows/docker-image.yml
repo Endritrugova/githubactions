@@ -17,4 +17,6 @@ jobs:
       run: docker build . --file Dockerfile --tag endritrugova/endrit:actions1
     
     - name: Push to DockerHub
-      run: docker push endritrugova/endrit:actions1
+      run: | 
+        docker login -u ${{secrets.DOCKER_USERNAME}} --password {{secrets.DOCKER_PAT}}
+        docker push endritrugova/endrit:actions1
